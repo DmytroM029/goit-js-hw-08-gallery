@@ -61,7 +61,9 @@ function onClick(evt) {
     const isImgHasEl = evt.target.classList.contains('gallery__image');
     if (!isImgHasEl) { return; }
     lightboxLink.classList.add('is-open');
-   lightboxLinkImg.src = evt.target.dataset.source; 
+    lightboxLinkImg.src = evt.target.dataset.source; 
+    window.addEventListener('keydown', onEscapeClose); 
+    window.addEventListener('keydown', onArrow); 
 };
 
 
@@ -81,7 +83,7 @@ refs.lightbox.addEventListener('click', onBackdropModal);
 
 
 function onOpenModal() {
-window.addEventListener('keydown', onEscapeClose);  //для Escape
+ //для Escape
    
     // lightboxLinkImg.src = galleryLinkImg.dataset.source; 
  }
@@ -104,4 +106,10 @@ function onEscapeClose(evt) {
     // const isEscKey = evt.code === ESC_KEY_CODE;
     // if (isEscKey) { onCloseModal();}
     
+}
+
+// function onArrow(evt) {
+//     let currentIndex = 0;
+//     if (currentIndex === galleryViewing.length - 1) { return currentIndex = -1; }; 
+//     if (evt.code === 'ArrowLeft') { currentIndex -= 1; } else if  (evt.code === 'ArrowRight')  { currentIndex += 1;  }
 }
