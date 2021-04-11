@@ -71,7 +71,7 @@ function onClick(evt) {
 const refs = {
     openModalClick: document.querySelector('.gallery__image'),
     closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
-    lightbox: document.querySelector('.lightbox__content'),
+    lightbox: document.querySelector('.lightbox__overlay'),
       
 };
 
@@ -79,16 +79,29 @@ refs.openModalClick.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.lightbox.addEventListener('click', onBackdropModal);
 
-function onOpenModal() {
 
+function onOpenModal() {
+window.addEventListener('keydown', onEscapeClose);  //для Escape
    
     // lightboxLinkImg.src = galleryLinkImg.dataset.source; 
  }
 function onCloseModal() {
+    window.removeEventListener('keydown', onEscapeClose); //для Escape
     lightboxLink.classList.remove('is-open');
+    lightboxLinkImg.src = '';
+
+
 }
- function onBackdropModal() {
-    
+ function onBackdropModal(evt) {
+     if (evt.currentTarget === evt.target) { onCloseModal(); }
  }
 
-
+function onEscapeClose(evt) {
+    if (evt.code === 'Escape') { onCloseModal(); }
+    
+    ////////или
+    //  const ESC_KEY_CODE = 'Escape';
+    // const isEscKey = evt.code === ESC_KEY_CODE;
+    // if (isEscKey) { onCloseModal();}
+    
+}
