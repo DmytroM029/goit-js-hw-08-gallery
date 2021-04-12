@@ -112,4 +112,4 @@ function onEscapeClose(evt) {
 //     let currentIndex = 0;
 //     if (currentIndex === galleryViewing.length - 1) { return currentIndex = -1; }; 
 //     if (evt.code === 'ArrowLeft') { currentIndex -= 1; } else if  (evt.code === 'ArrowRight')  { currentIndex += 1;  }
-}
+// }
